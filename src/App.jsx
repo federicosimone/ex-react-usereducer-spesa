@@ -6,12 +6,18 @@ import './App.css'
 import ProductsList from './components/productsList'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [addedProduct, setaddedProduct] = useState([])
+
+  const addToCart = (data) => {
+
+    setaddedProduct(data) //sbagliato ... da vedere
+  };
 
   return (
     <>
       <div>
-        <ProductsList />
+        <h1>Lista prodotti</h1>
+        <ProductsList addToCart={addToCart} />
       </div>
     </>
   )
