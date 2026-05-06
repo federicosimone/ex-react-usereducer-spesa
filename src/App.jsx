@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import './App.css'
 import ProductsList from './components/ProductsList'
 import Cart from './components/Cart'
@@ -38,9 +38,14 @@ function App() {
   }
 
 
-  const totaleDaPagare = addedProducts.reduce((acc, p) => acc + (p.price * p.quantity), 0)
+  //const totaleDaPagare = addedProducts.reduce((acc, p) => acc + (p.price * p.quantity), 0)
 
-  console.log(totaleDaPagare)
+  const totaleDaPagare2 = useMemo(() => {
+    const totale = addedProducts.reduce((acc, p) => acc + (p.price * p.quantity), 0)
+    return totale;
+  }, [addedProducts])
+
+  console.log(totaleDaPagare2)
   return (
     <>
       <div>
@@ -52,7 +57,7 @@ function App() {
             remove={removeFromCart} />
         </>)}
         <h3>TOTALE DA PAGARE:</h3>
-        <p>€ {(totaleDaPagare).toFixed(2)}</p>
+        <p>€ {(totaleDaPagare2).toFixed(2)}</p>
       </div>
     </>
   )
