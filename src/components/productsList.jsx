@@ -6,11 +6,9 @@ function ProductsList(props) {
         <>
 
             <ul className={style.listaProdotti}>
-                {products.map((product) => {
+                {products.map((product, i) => {
 
-
-
-                    return <li>{product.name} € {(product.price).toFixed(2)} <button onClick={() => props.addToCart(product)}>Aggiungi al carrello</button> </li>
+                    return <li key={i}>{product.name} € {(product.price).toFixed(2)} <button onClick={() => props.addToCart(product)}>Aggiungi al carrello</button> </li>
                 })}
             </ul>
         </>
